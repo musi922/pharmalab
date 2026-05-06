@@ -6,15 +6,15 @@
   "license": "UNLICENSED",
   "private": true,
   "type": "module",
-  "dependencies": {
-    "@sap/cds": "^8.9.10",
-    "express": "^4"
+  "dependencies":{
+    "@sap/cds": "^9.9.1",
+    "express": "^5.2.1"
   },
-  "devDependencies": {
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^8.9.10",
-    "@ui5/cli": "^3.0.0",
-    "eslint": "^8.57.0",
+    "devDependencies": {
+    "@cap-js/sqlite": "^2.4.0",
+    "@sap/cds-dk": "^9.9.0",
+    "@ui5/cli": "^4.0.52",
+    "eslint": "^9.39.4",
     "eslint-plugin-ui5": "^0.1.0"
   },
   "scripts": {

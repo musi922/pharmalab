@@ -1,5 +1,5 @@
 ### Get all data
-GET http://localhost:4004/odata/v4/main/Data
+GET http://localhost:4004/odata/v4/main/Products
 
 ### Get single entity
-GET http://localhost:4004/odata/v4/main/Data('001')
+GET http://localhost:4004/odata/v4/main/Products('2946b088-05bc-4bd2-bc62-fd1600128169')
