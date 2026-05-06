@@ -3,6 +3,13 @@ using from '../../srv/service';
 using from '../../db/schema';
 
 annotate service.Products with @(
+    UI.SelectionFields : [
+        name,
+        supplier.companyName,
+        category.name,
+        supplier.country,
+        unitPrice
+    ],
     UI.LineItem : [
         {
             $Type : 'UI.DataField',

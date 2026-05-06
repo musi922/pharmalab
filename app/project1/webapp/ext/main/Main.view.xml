@@ -1,7 +1,33 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="project1.ext.main.Main">
-    <Page id="Main" title="{i18n&gt;MainTitle}">
-        <content>
-            <macros:Table id="Table" metaPath="/Products/@com.sap.vocabularies.UI.v1.LineItem" enableExport="true" enableFullScreen="true" headerVisible="true" isSearchable="true" selectionMode="Multi" type="ResponsiveTable" variantManagement="None"/>
-        </content>
-    </Page>
+<mvc:View xmlns:f="sap.f" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:macros="sap.fe.macros" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="project1.ext.main.Main">
+
+    <f:DynamicPage id="main" class="sapUiResponsiveContentPadding">
+    <f:title>
+    <f:DynamicPageTitle id="DynamicPageTitle">
+    <f:heading>
+    <Title id="genTitle" text="Pharmacy"></Title>
+    </f:heading>
+    <f:snappedContent>
+        <Panel id="snappedPanel">
+            <HeaderContainer id="headerContainer" scrollStep="200" showDividers="true" content="{path: '/Products', parameters: {$expand: 'category,supplier'}, length: 5}">
+                <GenericTile id="productTile" header="{name}" subheader="{category/name}" press=".handler.onTilePress">
+                    <TileContent id="productContent" unit="Stock" footer="{supplier/companyName}">
+                        <NumericContent id="productNumeric" value="{unitsInStock}" valueColor="{= ${unitsInStock} > 10 ? 'Good' : 'Critical'}" indicator="{= ${unitsInStock} > 10 ? 'Up' : 'Down'}"/>
+                    </TileContent>
+                </GenericTile>
+            </HeaderContainer>
+        </Panel>
+    </f:snappedContent>
+    </f:DynamicPageTitle>
+    </f:title>
+    <f:header>
+    <f:DynamicPageHeader id="DynamicPageHeader">
+      <VBox id="vbox1">
+       <macros:FilterBar id="filterBar" metaPath="/Products/@com.sap.vocabularies.UI.v1.SelectionFields" filterChanged=".handler.onFiltersChanged"/>
+      </VBox>
+    </f:DynamicPageHeader>
+    </f:header>
+    <f:content>
+        <macros:Table id="Table" filterBar="filterBar" metaPath="/Products/@com.sap.vocabularies.UI.v1.LineItem" enableExport="true" enableFullScreen="true" headerVisible="true" isSearchable="true" selectionMode="Multi" type="ResponsiveTable" variantManagement="None"/>
+    </f:content>
+    </f:DynamicPage>
 </mvc:View>

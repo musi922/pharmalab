@@ -12,3 +12,6 @@ service MainService {
   action discontinueProduct(productID: UUID) returns String;
   function getLowStockProducts() returns array of Products;
 }
+
+using from '../app/project1/annotations';
+
