@@ -1,7 +1,6 @@
 using com.moyo.demo.myfiorielementsproject as my from '../db/schema';
 
 service MainService {
-
   entity Products as projection on my.Products;
   entity Categories as projection on my.Categories;
   entity Suppliers as projection on my.Suppliers;
