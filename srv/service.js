@@ -2,11 +2,11 @@ import cds from '@sap/cds';
 
 export default class MainService extends cds.ApplicationService {
   async init() {
-    this.on('READ', 'Data', this.#onReadData);
+    this.on('READ', 'Products', this.#onReadProducts);
     return super.init();
   }
 
-  async #onReadData(req, next) {
+  async #onReadProducts(req, next) {
     return next();
   }
 }

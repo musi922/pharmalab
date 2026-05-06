@@ -1,0 +1,11 @@
+ID,customer_ID,orderDate,requiredDate,shippedDate,shipVia,freight,shipName,shipAddress,shipCity,shipRegion,shipPostalCode,shipCountry
+22056676-2e5c-49e2-a28a-eb4583657874,adc3ccf1-2226-4d0d-8c25-de7e03021f93,2024-07-04,2024-08-01,2024-07-16,3,32.38,Alfreds Futterkiste,Obere Str. 57,Berlin,,12209,Germany
+3f092465-42b4-446d-aef6-c99b8a15f835,15543317-7ea8-4b1d-a1c6-398c31306bee,2024-07-05,2024-08-16,2024-07-10,1,11.61,Ana Trujillo,Avda. de la Constitución 2222,México D.F.,,05021,Mexico
+0c90134f-b3fd-4b20-bcd3-d72bdaa18835,605ad02a-ec38-491b-94dd-9f12dd387c37,2024-07-08,2024-08-05,2024-07-12,2,65.83,Antonio Moreno Taquería,Mataderos 2312,México D.F.,,05023,Mexico
+32a4f331-ebc9-4cd3-ab20-11982c02a473,3a11ba05-5e38-400d-9705-1fbd517ad3ea,2024-07-08,2024-09-02,2024-07-15,1,41.34,Around the Horn,Brook Farm Stratford St. Mary,Colchester,Essex,CO7 6JX,UK
+08063a04-ddc3-4395-8b8f-cd0b419da468,d1becb70-3ef5-41f5-af82-6d16554e5ef9,2024-07-09,2024-08-06,2024-07-11,2,51.30,Berglunds snabbköp,Berguvsvägen 8,Luleå,,S-958 22,Sweden
+6957ef3e-0043-4243-a6ae-9c9f2bb5f744,2eec1e01-29f2-4592-a5c4-9d50ae170ff7,2024-07-10,2024-08-07,2024-07-16,3,58.17,Blauer See Delikatessen,Forsterstr. 57,Mannheim,,68306,Germany
+7614182a-8351-4625-ad28-756d886e904f,faef8ecd-992a-4405-b4af-47dac3a80d0a,2024-07-11,2024-08-08,,1,22.98,Blondesddsl père et fils,24 place Kléber,Strasbourg,,67000,France
+6711afc5-ede3-408f-9d2c-12f6fd5b77e9,2ce77926-b33b-4bc0-b32a-a8f22003a82b,2024-07-12,2024-08-09,2024-07-15,2,148.33,Bólido Comidas preparadas,C/ Araquil 67,Madrid,,28023,Spain
+e04ab4fd-fd56-4f11-99c2-f3f626e303eb,15adcd3f-075a-4f94-971f-368558d3ddd9,2024-07-15,2024-08-12,2024-07-17,3,13.97,Bon app',12 rue des Bouchers,Marseille,,13008,France
+7cb86a65-8d14-4ebf-ba2b-2ab0807ea9c7,1a2a9549-7753-408d-8af9-eaf9fb7fbbf1,2024-07-16,2024-08-13,2024-07-22,1,81.91,Bottom-Dollar Markets,23 Tsawassen Blvd.,Tsawassen,BC,T2F 8M4,Canada

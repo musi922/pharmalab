@@ -1,0 +1,11 @@
+ID,name,supplier_ID,category_ID,quantityPerUnit,unitPrice,unitsInStock,unitsOnOrder,reorderLevel,discontinued
+2946b088-05bc-4bd2-bc62-fd1600128169,Chai,3690ef1c-a221-486d-8262-a0b74b4a9f4e,fdde0b98-8f57-4bbb-b29e-7544ae2eca19,10 boxes x 20 bags,18.00,39,0,10,false
+5be55c2a-157a-4f4f-9deb-5d46bbc91ff9,Chang,3690ef1c-a221-486d-8262-a0b74b4a9f4e,fdde0b98-8f57-4bbb-b29e-7544ae2eca19,24 - 12 oz bottles,19.00,17,40,25,false
+cd4d7db7-e546-4263-91aa-374c6a1d4bc4,Aniseed Syrup,3690ef1c-a221-486d-8262-a0b74b4a9f4e,15a37a4a-fda4-41b6-91f8-7a4f4564a0c4,12 - 550 ml bottles,10.00,13,70,25,false
+51cba5dc-3785-4a78-8a3f-b23c5d465c8a,Chef Anton's Cajun Seasoning,e5520e3c-e08d-49e8-8b6c-1ebde64ec927,15a37a4a-fda4-41b6-91f8-7a4f4564a0c4,48 - 6 oz jars,22.00,53,0,0,false
+da1684ee-1b42-4309-b541-e6f375e7ce24,Chef Anton's Gumbo Mix,e5520e3c-e08d-49e8-8b6c-1ebde64ec927,15a37a4a-fda4-41b6-91f8-7a4f4564a0c4,36 boxes,21.35,0,0,0,true
+e2427cfd-91f6-4e62-8354-546de96433d8,Grandma's Boysenberry Spread,cdf09fb1-9f63-4fe4-9ef1-ed983a0ae27a,15a37a4a-fda4-41b6-91f8-7a4f4564a0c4,12 - 8 oz jars,25.00,120,0,25,false
+319ab8c8-45c5-40b8-a40f-b7498140253e,Uncle Bob's Organic Dried Pears,cdf09fb1-9f63-4fe4-9ef1-ed983a0ae27a,447e0c40-d7b6-4c4f-86f2-b336d3bd2d0c,12 - 1 lb pkgs.,30.00,15,0,10,false
+eab587d4-772f-4843-b284-e74c411e3dda,Northwoods Cranberry Sauce,cdf09fb1-9f63-4fe4-9ef1-ed983a0ae27a,15a37a4a-fda4-41b6-91f8-7a4f4564a0c4,12 - 12 oz jars,40.00,6,0,0,false
+12b158b3-c35c-4aab-b67f-3e15e72ed0c8,Mishi Kobe Niku,452cc9fe-342a-4629-acd3-cd19ad5ba3c8,677c05d2-12ed-49c7-aed5-a54546236fdb,18 - 500 g pkgs.,97.00,29,0,0,true
+ca3aafa8-334f-48db-b52e-236422b5526b,Ikura,452cc9fe-342a-4629-acd3-cd19ad5ba3c8,dce402d9-0e5f-4178-95e6-d8dac32d532d,12 - 200 ml jars,31.00,31,0,0,false

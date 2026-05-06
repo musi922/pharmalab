@@ -7,11 +7,12 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "@sap/cds": "^8.0.0",
+    "@sap/cds": "^8.9.10",
     "express": "^4"
   },
   "devDependencies": {
     "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^8.9.10",
     "@ui5/cli": "^3.0.0",
     "eslint": "^8.57.0",
     "eslint-plugin-ui5": "^0.1.0"
@@ -20,5 +21,15 @@
     "start": "cds watch",
     "build": "npm run build:ui5",
     "build:ui5": "cd app && npm install && npm run build"
+  },
+  "cds": {
+    "requires": {
+      "db": {
+        "kind": "sqlite",
+        "credentials": {
+          "database": ":memory:"
+        }
+      }
+    }
   }
 }
