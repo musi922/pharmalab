@@ -1,0 +1,5 @@
+### Get all data
+GET http://localhost:4004/odata/v4/main/Data
+
+### Get single entity
+GET http://localhost:4004/odata/v4/main/Data('001')

@@ -1,0 +1,5 @@
+node_modules/
+dist/
+resources/
+test-resources/
+*.min.js

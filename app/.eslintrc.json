@@ -1,0 +1,30 @@
+{
+  "env": {
+    "browser": true,
+      "es2020": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2020,
+      "sourceType": "module"
+  },
+  "plugins": ["ui5"],
+    "extends": ["plugin:ui5/recommended"],
+      "rules": {
+    "no-console": "warn",
+      "no-unused-vars": "error",
+        "no-undef": "error",
+          "eqeqeq": ["error", "always"],
+            "curly": "error",
+              "no-var": "error",
+                "prefer-const": "error",
+                  "semi": ["error", "always"],
+                    "quotes": ["error", "double"],
+                      "indent": ["error", 2],
+                        "max-len": ["warn", { "code": 120 }],
+                          "no-trailing-spaces": "error",
+                            "comma-dangle": ["error", "always-multiline"],
+                              "object-shorthand": ["error", "always"],
+                                "arrow-body-style": ["error", "as-needed"],
+                                  "prefer-template": "error"
+  }
+} 
