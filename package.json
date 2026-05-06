@@ -5,12 +5,12 @@
   "repository": "<Add your repository here>",
   "license": "UNLICENSED",
   "private": true,
-  "type": "module",
-  "dependencies":{
+  "dependencies": {
     "@sap/cds": "^9.9.1",
+    "@sap/cds-foss": "^5.0.1",
     "express": "^5.2.1"
   },
-    "devDependencies": {
+  "devDependencies": {
     "@cap-js/sqlite": "^2.4.0",
     "@sap/cds-dk": "^9.9.0",
     "@ui5/cli": "^4.0.52",
