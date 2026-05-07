@@ -173,7 +173,7 @@ module.exports = class MainService extends cds.ApplicationService {
   }
 
   async _onDiscontinueProduct(req) {
-    const { productID } = req.data;
+    const productID = req.params[0].ID || req.params[0];
 
     const product = await SELECT.one
       .from("com.moyo.demo.myfiorielementsproject.Products")

@@ -1,7 +1,10 @@
 using com.moyo.demo.myfiorielementsproject as my from '../db/schema';
 
 service MainService {
-  entity Products as projection on my.Products;
+  @odata.draft.enabled: true
+  entity Products as projection on my.Products actions {
+    action discontinueProduct() returns String;
+  };
   entity Categories as projection on my.Categories;
   entity Suppliers as projection on my.Suppliers;
   entity Orders as projection on my.Orders;
@@ -9,9 +12,9 @@ service MainService {
   entity Customers as projection on my.Customers;
 
   action shipOrder(orderID: UUID) returns String;
-  action discontinueProduct(productID: UUID) returns String;
   function getLowStockProducts() returns array of Products;
 }
 
+using from './field-control';
 using from '../app/project1/annotations';
 

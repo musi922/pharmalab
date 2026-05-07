@@ -88,6 +88,11 @@
           "name": "ProductsMain",
           "pattern": ":?query:",
           "target": "ProductsMain"
+        },
+        {
+          "name": "ProductsObjectPage",
+          "pattern": "Products({key}):?query:",
+          "target": "ProductsObjectPage"
         }
       ],
       "targets": {
@@ -97,9 +102,27 @@
           "name": "sap.fe.core.fpm",
           "options": {
             "settings": {
-              "navigation": {},
+              "navigation": {
+                "Products": {
+                  "detail": {
+                    "route": "ProductsObjectPage"
+                  }
+                }
+              },
               "contextPath": "/Products",
               "viewName": "project1.ext.main.Main"
+            }
+          }
+        },
+        "ProductsObjectPage": {
+          "type": "Component",
+          "id": "ProductsObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": true,
+              "showBreadCrumbs": true,
+              "contextPath": "/Products"
             }
           }
         }
