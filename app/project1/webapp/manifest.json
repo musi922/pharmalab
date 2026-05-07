@@ -122,7 +122,10 @@
             "settings": {
               "editableHeaderContent": true,
               "showBreadCrumbs": true,
-              "contextPath": "/Products"
+              "contextPath": "/Products",
+              "controllerExtensions": {
+                "sap.fe.templates.ObjectPage.ObjectPageController": "project1.ext.controller.ProductsObjectPage"
+              }
             }
           }
         }

@@ -28,27 +28,44 @@ module.exports = class MainService extends cds.ApplicationService {
     this.on("discontinueProduct", this._onDiscontinueProduct.bind(this));
     this.on("getLowStockProducts", this._onGetLowStockProducts.bind(this));
 
+    this.on("error", (err, req) => {
+      if (err.code === "SQLITE_CONSTRAINT_NOTNULL" || err.message.includes("NOT NULL")) {
+        const sMsgKey = "MANDATORY_FIELD_MISSING";
+        const sFieldKey = "productName";
+
+        if (req && typeof req.t === 'function') {
+          err.message = req.t(sMsgKey, [req.t(sFieldKey)]);
+        } else {
+          err.message = `Please fill in the mandatory field 'Product name'.`;
+        }
+        err.status = 400;
+      }
+    });
+
     return super.init();
   }
 
   async _validateProduct(req) {
     const { unitPrice, unitsInStock } = req.data;
+
     if (unitPrice !== undefined && unitPrice <= 0) {
-      req.error(400, "Unit price must be greater than 0");
+      req.error(400, req.t("UNIT_PRICE_ERROR"), "unitPrice");
     }
     if (unitsInStock !== undefined && unitsInStock < 0) {
-      req.error(400, "Units in stock cannot be negative");
+      req.error(400, req.t("UNITS_IN_STOCK_ERROR"), "unitsInStock");
     }
   }
 
   async _validateOrder(req) {
     const { orderDate, requiredDate } = req.data;
+
+    // Client-side UI5 handles mandatory checks for customer and date
     if (
       orderDate &&
       requiredDate &&
       new Date(requiredDate) <= new Date(orderDate)
     ) {
-      req.error(400, "Required date must be after order date");
+      req.error(400, req.t("REQUIRED_DATE_ERROR"), "requiredDate");
     }
   }
 
@@ -56,13 +73,13 @@ module.exports = class MainService extends cds.ApplicationService {
     const { quantity, discount, product_ID, unitPrice } = req.data;
 
     if (quantity !== undefined && quantity <= 0) {
-      req.error(400, "Quantity must be greater than 0");
+      req.error(400, req.t("QUANTITY_ERROR"), "quantity");
     }
     if (discount !== undefined && (discount < 0 || discount > 1)) {
-      req.error(400, "Discount must be between 0 and 1");
+      req.error(400, req.t("DISCOUNT_ERROR"), "discount");
     }
     if (unitPrice !== undefined && unitPrice <= 0) {
-      req.error(400, "Unit price must be greater than 0");
+      req.error(400, req.t("UNIT_PRICE_ERROR"), "unitPrice");
     }
 
     if (product_ID) {
@@ -71,20 +88,26 @@ module.exports = class MainService extends cds.ApplicationService {
         .where({ ID: product_ID });
 
       if (!product) {
-        req.error(404, `Product ${product_ID} not found`);
+        req.error(404, req.t("PRODUCT_NOT_FOUND", [product_ID]), "product_ID");
         return;
       }
       if (product.discontinued) {
         req.error(
           400,
-          `Product "${product.name}" is discontinued and cannot be ordered`,
+          req.t("PRODUCT_DISCONTINUED", [product.name]),
+          "product_ID",
         );
         return;
       }
       if (quantity > product.unitsInStock) {
         req.error(
           400,
-          `Insufficient stock for "${product.name}". Available: ${product.unitsInStock}, Requested: ${quantity}`,
+          req.t("INSUFFICIENT_STOCK", [
+            product.name,
+            product.unitsInStock,
+            quantity,
+          ]),
+          "quantity",
         );
       }
     }
@@ -140,16 +163,17 @@ module.exports = class MainService extends cds.ApplicationService {
       .from("com.moyo.demo.myfiorielementsproject.Orders")
       .where({ ID: orderID });
 
-    if (!order) return req.error(404, `Order ${orderID} not found`);
+    if (!order)
+      return req.error(404, req.t("PRODUCT_NOT_FOUND", [orderID]));
     if (order.shippedDate)
-      return req.error(400, `Order ${orderID} has already been shipped`);
+      return req.error(400, req.t("ORDER_SHIPPED_ALREADY", [orderID]));
 
     const orderDetails = await SELECT.from(
       "com.moyo.demo.myfiorielementsproject.Order_Details",
     ).where({ order_ID: orderID });
 
     if (!orderDetails.length)
-      return req.error(400, `Order ${orderID} has no items`);
+      return req.error(400, req.t("ORDER_NO_ITEMS", [orderID]));
 
     await UPDATE("com.moyo.demo.myfiorielementsproject.Orders")
       .set({ shippedDate: new Date().toISOString().split("T")[0] })
@@ -179,11 +203,12 @@ module.exports = class MainService extends cds.ApplicationService {
       .from("com.moyo.demo.myfiorielementsproject.Products")
       .where({ ID: productID });
 
-    if (!product) return req.error(404, `Product ${productID} not found`);
+    if (!product)
+      return req.error(404, req.t("PRODUCT_NOT_FOUND", [productID]));
     if (product.discontinued)
       return req.error(
         400,
-        `Product "${product.name}" is already discontinued`,
+        req.t("PRODUCT_DISCONTINUED", [product.name]),
       );
 
     const openOrders = await SELECT.from(
@@ -201,7 +226,7 @@ module.exports = class MainService extends cds.ApplicationService {
       if (unshippedOrders.length) {
         return req.error(
           400,
-          `Cannot discontinue "${product.name}" — it has ${unshippedOrders.length} open unshipped order(s)`,
+          req.t("CANNOT_DISCONTINUE", [product.name, unshippedOrders.length]),
         );
       }
     }
