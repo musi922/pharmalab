@@ -27,14 +27,19 @@ entity Suppliers : cuid {
 entity Products : cuid {
   @changelog
   name            : String(100) not null;
+  @changelog: [supplier.companyName]
   supplier        : Association to one Suppliers;
+  @changelog: [category.name]
   category        : Association to one Categories;
+  @changelog
   quantityPerUnit : String(40);
   @changelog
   unitPrice       : Decimal(10, 2) default 0;
   @changelog
   unitsInStock    : Integer        default 0;
+  @changelog
   unitsOnOrder    : Integer        default 0;
+  @changelog
   reorderLevel    : Integer        default 0;
   @changelog
   discontinued    : Boolean        default false;
