@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/change-tracking": "^1.2.1",
     "@sap/cds": "^8.9.10",
     "@sap/cds-foss": "^5.0.1",
     "express": "^4.22.1"

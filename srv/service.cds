@@ -16,5 +16,6 @@ service MainService {
 }
 
 using from './field-control';
+using from './change-tracking';
 using from '../app/project1/annotations';
 

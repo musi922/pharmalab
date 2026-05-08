@@ -23,15 +23,20 @@ entity Suppliers : cuid {
   products     : Association to many Products on products.supplier = $self;
 }
 
+@changelog: [name]
 entity Products : cuid {
+  @changelog
   name            : String(100) not null;
   supplier        : Association to one Suppliers;
   category        : Association to one Categories;
   quantityPerUnit : String(40);
+  @changelog
   unitPrice       : Decimal(10, 2) default 0;
+  @changelog
   unitsInStock    : Integer        default 0;
   unitsOnOrder    : Integer        default 0;
   reorderLevel    : Integer        default 0;
+  @changelog
   discontinued    : Boolean        default false;
 }
 
@@ -64,10 +69,14 @@ entity Orders : cuid {
   items          : Composition of many Order_Details on items.order = $self;
 }
 
+@changelog: [product.name]
 entity Order_Details : cuid {
   order     : Association to one Orders   not null;
   product   : Association to one Products not null;
+  @changelog
   unitPrice : Decimal(10, 2) not null;
+  @changelog
   quantity  : Integer        not null default 1;
+  @changelog
   discount  : Decimal(4, 2)           default 0;
 }
