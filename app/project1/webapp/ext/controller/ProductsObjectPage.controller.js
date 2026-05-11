@@ -67,6 +67,56 @@ sap.ui.define([
                     return Promise.resolve();
                 }
             }
+        },
+
+        onPostComment: function (oEvent) {
+            var oView = this.getView();
+            var sComment = oEvent.getParameter("value");
+            var oResourceBundle = oView.getModel("i18n").getResourceBundle();
+
+            // Try to find the list by searching all controls if specific IDs fail
+            var oList = oView.byId("project1::ProductsObjectPage--commentsList") ||
+                oView.byId("commentsList") ||
+                sap.ui.getCore().byId(oView.getId() + "--commentsList");
+
+            if (!oList) {
+                // Last resort: search by ID suffix
+                var aControls = oView.findAggregatedObjects(true, function (oControl) {
+                    return oControl.getId && oControl.getId().endsWith("--commentsList");
+                });
+                if (aControls.length > 0) {
+                    oList = aControls[0];
+                }
+            }
+
+            if (!oList) {
+                sap.m.MessageBox.error("Technical Error: Could not locate the comments list control. Please check the console.");
+                console.error("Comments list not found. View ID:", oView.getId());
+                return;
+            }
+
+            var oBinding = oList.getBinding("items");
+            if (!oBinding) {
+                sap.m.MessageBox.error("Technical Error: List exists but has no binding.");
+                return;
+            }
+
+            var oContext = oView.getBindingContext();
+            var sProductID = oContext.getProperty("ID");
+
+            var oNewContext = oBinding.create({
+                "comment": sComment,
+                "product_ID": sProductID
+            });
+
+            sap.m.MessageToast.show("Posting note...");
+
+            oNewContext.created().then(function () {
+                sap.m.MessageToast.show("Note posted successfully!");
+            }, function (oError) {
+                sap.m.MessageBox.error("Failed to post note: " + (oError.message || "Unknown error"));
+                console.error("Post Note Error:", oError);
+            });
         }
     });
 });

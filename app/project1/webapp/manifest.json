@@ -125,6 +125,17 @@
               "contextPath": "/Products",
               "controllerExtensions": {
                 "sap.fe.templates.ObjectPage.ObjectPageController": "project1.ext.controller.ProductsObjectPage"
+              },
+              "content": {
+                "body": {
+                  "sections": {
+                    "CommentsSection": {
+                      "title": "{{Comments}}",
+                      "type": "XMLFragment",
+                      "name": "project1.ext.fragment.Comments"
+                    }
+                  }
+                }
               }
             }
           }

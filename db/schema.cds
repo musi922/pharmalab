@@ -1,5 +1,5 @@
 namespace com.moyo.demo.myfiorielementsproject;
-using { cuid } from '@sap/cds/common';
+using { cuid, managed } from '@sap/cds/common';
 
 entity Categories : cuid {
   name        : String(80)  not null;
@@ -43,6 +43,13 @@ entity Products : cuid {
   reorderLevel    : Integer        default 0;
   @changelog
   discontinued    : Boolean        default false;
+  comments        : Association to many Comments on comments.product = $self;
+}
+
+entity Comments : cuid, managed {
+  product : Association to one Products;
+  @changelog
+  comment : String(1000);
 }
 
 entity Customers : cuid {

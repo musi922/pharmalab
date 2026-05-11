@@ -10,6 +10,7 @@ service MainService {
   entity Orders as projection on my.Orders;
   entity Order_Details as projection on my.Order_Details;
   entity Customers as projection on my.Customers;
+  entity Comments as projection on my.Comments;
 
   action shipOrder(orderID: UUID) returns String;
   function getLowStockProducts() returns array of Products;

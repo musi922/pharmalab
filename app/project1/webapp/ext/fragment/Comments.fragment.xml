@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+>
+    <VBox id="commentsVBox" class="sapUiSmallMargin">
+        <FeedInput 
+            id="commentInput" 
+            post="onPostComment" 
+            icon="sap-icon://comment" 
+            placeholder="Type your note here..."
+            class="sapUiMediumMarginBottom"
+        />
+        <List
+            id="commentsList"
+            showSeparators="None"
+            items="{
+                path: 'comments',
+                parameters: {
+                    $orderby: 'createdAt desc'
+                }
+            }"
+            noDataText="No notes yet."
+        >
+            <CustomListItem>
+                <VBox class="sapUiSmallMarginBottom sapUiContentPadding" style="background-color: #eff4f9; border-left: 5px solid #0a6ed1; border-radius: 4px; border-top: 1px solid #dbe5ec; border-right: 1px solid #dbe5ec; border-bottom: 1px solid #dbe5ec;">
+                    <HBox justifyContent="SpaceBetween" alignItems="Center">
+                        <Label text="{createdBy}" design="Bold" class="sapUiTinyMarginEnd" />
+                        <Text 
+                            text="{
+                                path: 'createdAt',
+                                type: 'sap.ui.model.odata.type.DateTimeOffset',
+                                formatOptions: {
+                                    relative: true
+                                }
+                            }" 
+                            class="sapUiTinyMarginEnd"
+                            style="font-size: 0.85rem; color: #666;"
+                        />
+                    </HBox>
+                    <Text text="{comment}" class="sapUiTinyMarginTop" />
+                </VBox>
+            </CustomListItem>
+        </List>
+    </VBox>
+</core:FragmentDefinition>
